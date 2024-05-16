@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<header>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="banner-text">
+                    <h1>ToDo</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <form class="form-horizontal p-3 shadow" method="POST">
+            {% csrf_token %}
+                <div class="form-group">
+<!--                    <label class="control-label col-sm-2" >Name:</label>-->
+                    <div class="col-sm-10"><br>
+                        <input type="text" class="form-control" name="task" placeholder="Enter the task">
+                    </div>
+                </div>
+                <div class="form-group">
+<!--                    <label class="control-label col-sm-2" >Priority:</label>-->
+                    <div class="col-sm-10">
+                        <br>
+                        <input type="text" class="form-control" name="priority" placeholder="No.of Priority:">
+                    </div>
+                </div>
+                <div class="form-group">
+<!--                    <label class="control-label col-sm-2" >Priority:</label>-->
+                    <div class="col-sm-10">
+                        <br>
+                        <input type="date" class="form-control" name="date" placeholder="Date">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <br>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="col-6">
+            {% for i in task1 %}
+<!--            <h6>Tasks to be completed</h6>-->
+            <div class="card" onmouseover="this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.5)'" onmouseout="this.style.boxShadow=''">
+                <div class="card-body">
+                    <h5 class="card-title">{{i.name}}</h5>
+                    <p><b>{{i.priority}}</b></p>
+                    <b>{{i.date}}</b>
+                    <a class="btn btn-primary" href="{% url 'delete' i.id %}">Done</a>
+                    <a class="btn btn-info" href="{% url 'update' i.id %}">Update</a>
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</header>
+
+
+<!--            <form method="POST" class="mb-3 shadow">-->
+<!--                {% csrf_token %}-->
+<!--                <div class="form-group">-->
+<!--                    <input type="text" name="task" class="form-control" placeholder="Enter the task">-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <input type="text" name="priority" class="form-control" placeholder="No of priority">-->
+<!--                </div>-->
+<!--                <br>-->
+<!--                <input type="submit" class="btn btn-success">-->
+<!--            </form>-->
+
+{% endblock %}
