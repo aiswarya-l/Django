@@ -1,0 +1,11 @@
+.nav_item {
+    letter-spacing: .2em;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.nav-link {
+    text-transform:uppercase;
+    letter-spacing: .2em;
+    font-size: 14px; 
+}
